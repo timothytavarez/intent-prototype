@@ -1,0 +1,597 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "org.accordproject.time.Month": {
+      "title": "Month",
+      "description": "An instance of org.accordproject.time.Month",
+      "enum": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    },
+    "org.accordproject.time.Day": {
+      "title": "Day",
+      "description": "An instance of org.accordproject.time.Day",
+      "enum": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    "org.accordproject.time.TemporalUnit": {
+      "title": "TemporalUnit",
+      "description": "An instance of org.accordproject.time.TemporalUnit",
+      "enum": [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "weeks"
+      ]
+    },
+    "org.accordproject.time.Duration": {
+      "title": "Duration",
+      "description": "An instance of org.accordproject.time.Duration",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.time.Duration",
+          "pattern": "^org\\.accordproject\\.time\\.Duration$",
+          "description": "The class identifier for this type"
+        },
+        "amount": {
+          "type": "integer"
+        },
+        "unit": {
+          "$ref": "#/definitions/org.accordproject.time.TemporalUnit"
+        }
+      },
+      "required": [
+        "$class",
+        "amount",
+        "unit"
+      ]
+    },
+    "org.accordproject.time.PeriodUnit": {
+      "title": "PeriodUnit",
+      "description": "An instance of org.accordproject.time.PeriodUnit",
+      "enum": [
+        "days",
+        "weeks",
+        "months",
+        "quarters",
+        "years"
+      ]
+    },
+    "org.accordproject.time.Period": {
+      "title": "Period",
+      "description": "An instance of org.accordproject.time.Period",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.time.Period",
+          "pattern": "^org\\.accordproject\\.time\\.Period$",
+          "description": "The class identifier for this type"
+        },
+        "amount": {
+          "type": "integer"
+        },
+        "unit": {
+          "$ref": "#/definitions/org.accordproject.time.PeriodUnit"
+        }
+      },
+      "required": [
+        "$class",
+        "amount",
+        "unit"
+      ]
+    },
+    "org.accordproject.money.DigitalMonetaryAmount": {
+      "title": "DigitalMonetaryAmount",
+      "description": "An instance of org.accordproject.money.DigitalMonetaryAmount",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.money.DigitalMonetaryAmount",
+          "pattern": "^org\\.accordproject\\.money\\.DigitalMonetaryAmount$",
+          "description": "The class identifier for this type"
+        },
+        "doubleValue": {
+          "type": "number"
+        },
+        "digitalCurrencyCode": {
+          "$ref": "#/definitions/org.accordproject.money.DigitalCurrencyCode"
+        }
+      },
+      "required": [
+        "$class",
+        "doubleValue",
+        "digitalCurrencyCode"
+      ]
+    },
+    "org.accordproject.money.DigitalCurrencyCode": {
+      "title": "DigitalCurrencyCode",
+      "description": "An instance of org.accordproject.money.DigitalCurrencyCode",
+      "enum": [
+        "ADA",
+        "BCH",
+        "BTC",
+        "DASH",
+        "EOS",
+        "ETC",
+        "ETH",
+        "LTC",
+        "NEO",
+        "XLM",
+        "XMR",
+        "XRP",
+        "ZEC"
+      ]
+    },
+    "org.accordproject.money.MonetaryAmount": {
+      "title": "MonetaryAmount",
+      "description": "An instance of org.accordproject.money.MonetaryAmount",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.money.MonetaryAmount",
+          "pattern": "^org\\.accordproject\\.money\\.MonetaryAmount$",
+          "description": "The class identifier for this type"
+        },
+        "doubleValue": {
+          "type": "number"
+        },
+        "currencyCode": {
+          "$ref": "#/definitions/org.accordproject.money.CurrencyCode"
+        }
+      },
+      "required": [
+        "$class",
+        "doubleValue",
+        "currencyCode"
+      ]
+    },
+    "org.accordproject.money.CurrencyCode": {
+      "title": "CurrencyCode",
+      "description": "An instance of org.accordproject.money.CurrencyCode",
+      "enum": [
+        "AED",
+        "AFN",
+        "ALL",
+        "AMD",
+        "ANG",
+        "AOA",
+        "ARS",
+        "AUD",
+        "AWG",
+        "AZN",
+        "BAM",
+        "BBD",
+        "BDT",
+        "BGN",
+        "BHD",
+        "BIF",
+        "BMD",
+        "BND",
+        "BOB",
+        "BOV",
+        "BRL",
+        "BSD",
+        "BTN",
+        "BWP",
+        "BYN",
+        "BZD",
+        "CAD",
+        "CDF",
+        "CHE",
+        "CHF",
+        "CHW",
+        "CLF",
+        "CLP",
+        "CNY",
+        "COP",
+        "COU",
+        "CRC",
+        "CUC",
+        "CUP",
+        "CVE",
+        "CZK",
+        "DJF",
+        "DKK",
+        "DOP",
+        "DZD",
+        "EGP",
+        "ERN",
+        "ETB",
+        "EUR",
+        "FJD",
+        "FKP",
+        "GBP",
+        "GEL",
+        "GHS",
+        "GIP",
+        "GMD",
+        "GNF",
+        "GTQ",
+        "GYD",
+        "HKD",
+        "HNL",
+        "HRK",
+        "HTG",
+        "HUF",
+        "IDR",
+        "ILS",
+        "INR",
+        "IQD",
+        "IRR",
+        "ISK",
+        "JMD",
+        "JOD",
+        "JPY",
+        "KES",
+        "KGS",
+        "KHR",
+        "KMF",
+        "KPW",
+        "KRW",
+        "KWD",
+        "KYD",
+        "KZT",
+        "LAK",
+        "LBP",
+        "LKR",
+        "LRD",
+        "LSL",
+        "LYD",
+        "MAD",
+        "MDL",
+        "MGA",
+        "MKD",
+        "MMK",
+        "MNT",
+        "MOP",
+        "MRU",
+        "MUR",
+        "MVR",
+        "MWK",
+        "MXN",
+        "MXV",
+        "MYR",
+        "MZN",
+        "NAD",
+        "NGN",
+        "NIO",
+        "NOK",
+        "NPR",
+        "NZD",
+        "OMR",
+        "PAB",
+        "PEN",
+        "PGK",
+        "PHP",
+        "PKR",
+        "PLN",
+        "PYG",
+        "QAR",
+        "RON",
+        "RSD",
+        "RUB",
+        "RWF",
+        "SAR",
+        "SBD",
+        "SCR",
+        "SDG",
+        "SEK",
+        "SGD",
+        "SHP",
+        "SLL",
+        "SOS",
+        "SRD",
+        "SSP",
+        "STN",
+        "SVC",
+        "SYP",
+        "SZL",
+        "THB",
+        "TJS",
+        "TMT",
+        "TND",
+        "TOP",
+        "TRY",
+        "TTD",
+        "TWD",
+        "TZS",
+        "UAH",
+        "UGX",
+        "USD",
+        "USN",
+        "UYI",
+        "UYU",
+        "UZS",
+        "VEF",
+        "VND",
+        "VUV",
+        "WST",
+        "XAF",
+        "XAG",
+        "XAU",
+        "XBA",
+        "XBB",
+        "XBC",
+        "XBD",
+        "XCD",
+        "XDR",
+        "XOF",
+        "XPD",
+        "XPF",
+        "XPT",
+        "XSU",
+        "XTS",
+        "XUA",
+        "XXX",
+        "YER",
+        "ZAR",
+        "ZMW",
+        "ZWL"
+      ]
+    },
+    "org.accordproject.money.CurrencyConversion": {
+      "title": "CurrencyConversion",
+      "description": "An instance of org.accordproject.money.CurrencyConversion",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.money.CurrencyConversion",
+          "pattern": "^org\\.accordproject\\.money\\.CurrencyConversion$",
+          "description": "The class identifier for this type"
+        },
+        "from": {
+          "$ref": "#/definitions/org.accordproject.money.CurrencyCode"
+        },
+        "to": {
+          "$ref": "#/definitions/org.accordproject.money.CurrencyCode"
+        },
+        "rate": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "$class",
+        "from",
+        "to",
+        "rate"
+      ]
+    },
+    "org.accordproject.contract.Contract": {
+      "title": "Contract",
+      "description": "An instance of org.accordproject.contract.Contract",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.contract.Contract",
+          "pattern": "^org\\.accordproject\\.contract\\.Contract$",
+          "description": "The class identifier for this type"
+        },
+        "contractId": {
+          "type": "string",
+          "description": "The instance identifier for this type"
+        }
+      },
+      "required": [
+        "$class",
+        "contractId"
+      ]
+    },
+    "org.accordproject.contract.Clause": {
+      "title": "Clause",
+      "description": "An instance of org.accordproject.contract.Clause",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.contract.Clause",
+          "pattern": "^org\\.accordproject\\.contract\\.Clause$",
+          "description": "The class identifier for this type"
+        },
+        "clauseId": {
+          "type": "string",
+          "description": "The instance identifier for this type"
+        }
+      },
+      "required": [
+        "$class",
+        "clauseId"
+      ]
+    },
+    "org.accordproject.runtime.Request": {
+      "title": "Request",
+      "description": "An instance of org.accordproject.runtime.Request",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.runtime.Request",
+          "pattern": "^org\\.accordproject\\.runtime\\.Request$",
+          "description": "The class identifier for this type"
+        }
+      },
+      "required": [
+        "$class"
+      ]
+    },
+    "org.accordproject.runtime.Response": {
+      "title": "Response",
+      "description": "An instance of org.accordproject.runtime.Response",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.runtime.Response",
+          "pattern": "^org\\.accordproject\\.runtime\\.Response$",
+          "description": "The class identifier for this type"
+        }
+      },
+      "required": [
+        "$class"
+      ]
+    },
+    "org.accordproject.runtime.Obligation": {
+      "title": "Obligation",
+      "description": "An instance of org.accordproject.runtime.Obligation",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.runtime.Obligation",
+          "pattern": "^org\\.accordproject\\.runtime\\.Obligation$",
+          "description": "The class identifier for this type"
+        },
+        "contract": {
+          "type": "string",
+          "description": "The identifier of an instance of org.accordproject.contract.Contract"
+        },
+        "promisor": {
+          "type": "string",
+          "description": "The identifier of an instance of concerto.Participant"
+        },
+        "promisee": {
+          "type": "string",
+          "description": "The identifier of an instance of concerto.Participant"
+        },
+        "deadline": {
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "contract"
+      ]
+    },
+    "org.accordproject.runtime.State": {
+      "title": "State",
+      "description": "An instance of org.accordproject.runtime.State",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.runtime.State",
+          "pattern": "^org\\.accordproject\\.runtime\\.State$",
+          "description": "The class identifier for this type"
+        }
+      },
+      "required": [
+        "$class"
+      ]
+    },
+    "org.accordproject.ergo.options.Options": {
+      "title": "Options",
+      "description": "An instance of org.accordproject.ergo.options.Options",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.accordproject.ergo.options.Options",
+          "pattern": "^org\\.accordproject\\.ergo\\.options\\.Options$",
+          "description": "The class identifier for this type"
+        },
+        "wrapVariables": {
+          "type": "boolean"
+        },
+        "template": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "$class",
+        "wrapVariables",
+        "template"
+      ]
+    },
+    "org.combinedao.IntentContract.SignLetter": {
+      "title": "SignLetter",
+      "description": "An instance of org.combinedao.IntentContract.SignLetter",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.combinedao.IntentContract.SignLetter",
+          "pattern": "^org\\.combinedao\\.IntentContract\\.SignLetter$",
+          "description": "The class identifier for this type"
+        },
+        "input": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "input"
+      ]
+    },
+    "org.combinedao.IntentContract.MyResponse": {
+      "title": "MyResponse",
+      "description": "An instance of org.combinedao.IntentContract.MyResponse",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.combinedao.IntentContract.MyResponse",
+          "pattern": "^org\\.combinedao\\.IntentContract\\.MyResponse$",
+          "description": "The class identifier for this type"
+        },
+        "output": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$class",
+        "output"
+      ]
+    },
+    "org.combinedao.IntentContract.IntentContract": {
+      "title": "IntentContract",
+      "description": "An instance of org.combinedao.IntentContract.IntentContract",
+      "type": "object",
+      "properties": {
+        "$class": {
+          "type": "string",
+          "default": "org.combinedao.IntentContract.IntentContract",
+          "pattern": "^org\\.combinedao\\.IntentContract\\.IntentContract$",
+          "description": "The class identifier for this type"
+        },
+        "member": {
+          "type": "string"
+        },
+        "contractId": {
+          "type": "string",
+          "description": "The instance identifier for this type"
+        }
+      },
+      "required": [
+        "$class",
+        "member",
+        "contractId"
+      ]
+    }
+  }
+}
